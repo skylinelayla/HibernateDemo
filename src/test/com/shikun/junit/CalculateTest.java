@@ -1,5 +1,4 @@
-package test.com.shikun.junit; 
-
+package com.shikun.junit;
 import com.shikun.junit.Calculate;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,6 +6,11 @@ import org.junit.Before;
 import org.junit.After;
 
 import static org.junit.Assert.*;
+/*
+
+
+@RunWith 更改测试运行器
+ */
 
 /** 
 * Calculate Tester. 
@@ -14,12 +18,14 @@ import static org.junit.Assert.*;
 */ 
 public class CalculateTest { 
 
-@Before
-public void before() throws Exception { 
+@Before//方法运行前执行
+public void before() throws Exception {
+    //System.out.println("before");
 } 
 
-@After
-public void after() throws Exception { 
+@After//方法运行后执行
+public void after() throws Exception {
+   // System.out.println("after");
 } 
 
 /** 
@@ -27,9 +33,10 @@ public void after() throws Exception {
 * Method: add(int a, int b) 
 * 
 */ 
-@Test
+@Test//测试方法
 public void testAdd() throws Exception {
 //TODO: Test goes here...
+    //System.out.println("this is test1");
      assertEquals(6, new Calculate().add(3, 3));
 
 } 
@@ -61,10 +68,10 @@ public void testMultiply() throws Exception {
 * Method: divide(int a, int b) 
 * 
 */ 
-@Test
+@Test(expected = ArithmeticException.class)//捕获异常。不报错
 public void testDivide() throws Exception { 
 //TODO: Test goes here...
-    assertEquals(1, new Calculate().divide(3,3));
+    assertEquals(3, new Calculate().divide(3,0));
 }
 
 } 
